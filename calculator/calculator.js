@@ -16,3 +16,6 @@ function calculateResult() {
     document.getElementById("display").value = "Error";
   }
 }
+function sayHello() {
+  alert("Hello, World!");
+}
