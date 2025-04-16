@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url(../../images/nature.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.morph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+  height: 100vh;
+  flex-direction: column;
+  background: rgba(1, 1, 1, 0.5);
+}
+.morph h1 {
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+  color: white;
+  font-size: 3rem;
+  font-family: "Courier New", Courier, monospace;
+  text-align: center;
+}
+.cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 14rem;
+  width: 25rem;
+  background-color: grey;
+  border: 1px solid white;
+  border-radius: 5px;
+  gap: 1rem;
+  position: relative;
+  box-shadow: -10px -10px 1000px whitesmoke;
+}
+.cover::before,
+.cover::after {
+  content: "";
+  position: absolute;
+  width: 10rem;
+  height: 2px;
+  background-color: white;
+}
+.cover::before {
+  top: 50%;
+  left: -40.5%;
+  transform: translatey(-50%);
+}
+.cover::after {
+  bottom: 50%;
+  right: -40.5%;
+  transform: translatey(-50%);
+}
+.stopwatch span {
+  display: inline-block;
+  background-color: white;
+  height: 2.5rem;
+  width: 15rem;
+  margin: 0 1rem;
+  outline: 3px solid black;
+  border-radius: 8%;
+  font-weight: 600;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 2.5rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  box-shadow: 0 0 30px 0px black;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.controls button {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+#start {
+  background-color: green;
+}
+#start:hover {
+  background-color: hsl(120, 73%, 20%);
+}
+#stop {
+  background-color: red;
+}
+#stop:hover {
+  background-color: hsl(0, 79%, 27%);
+}
+#reset {
+  background-color: blue;
+}
+#reset:hover {
+  background-color: hsl(190, 53%, 29%);
+}
