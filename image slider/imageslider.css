@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: url("./images/city.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  z-index: 0;
+}
+.morph {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(1, 1, 1, 0.2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(100px);
+  position: absolute;
+  z-index: 1;
+}
+.slider {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+.slides {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.slides img {
+  width: 500px;
+  height: 500px;
+  /* padding: 1rem; */
+  border-radius: 1rem;
+  border: 2px solid white;
+  box-shadow: 0 0 100px brown;
+  animation: fade 0.4s ease-in-out;
+  contain: cover;
+  display: none;
+}
+.slider > button {
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+  font-size: 4rem;
+}
+.displayslide {
+  display: block;
+}
+.prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10%;
+}
+.next {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+img.displayslide {
+  display: block;
+}
+@keyframes fade {
+  0% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
