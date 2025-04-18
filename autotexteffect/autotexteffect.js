@@ -2,7 +2,7 @@ const textEl = document.querySelector(".text");
 const speedEl = document.querySelector("#speed");
 let idx = 1;
 let speed = 300 / speedEl.value;
-const text = prompt("Please enter your statement");
+const text = "burhan boht pyara bacha ha";
 writeText();
 
 function writeText() {
