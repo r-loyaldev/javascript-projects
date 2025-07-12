@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  /*  */
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.main {
+  /* border: 1px solid black; */
+  top: 10%;
+  width: 50vw;
+  height: 50vh;
+  margin: 200px auto;
+  background-color: #eee565;
+  display: flex;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.transform {
+  transform: rotatey("180deg");
+  transition: all 1s ease-in-out;
+  z-index: 1;
+  width: 100%;
+  height: 50%;
+  position: relative;
+  background-color: red;
+  top: -74.8%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.moveup {
+  transition: all 1s ease-in-out;
+}
+span {
+  position: absolute;
+  top: 34%;
+  left: 41%;
+  font-size: 5rem;
+  cursor: pointer;
+  z-index: 3;
+}
+span:hover {
+  color: red;
+  transform: scale(1.5) rotatey(360deg);
+  transition: all 0.9s ease-in-out;
+}
+span:active {
+  transform: scale(1);
+  transition: all 0.1s ease-in-out;
+}
+
+.upperpart {
+  /* border: 1px solid black; */
+  /* z-index: 1; */
+  width: 100%;
+  height: 50%;
+  position: relative;
+  background-color: #f5e618;
+  top: -80px;
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+}
+h1 {
+  font-family: fantasy;
+}
+.leftpart {
+  position: absolute;
+  background-color: red;
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  top: 0px;
+  left: 0px;
+  clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+}
+.letter:hover {
+  transform: translatey(-94px);
+  transition: all 1s ease-in-out;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  background-color: #f1edb0;
+}
+.rightpart {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: red;
+  z-index: 2;
+  top: 0px;
+  right: 0px;
+  clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
+}
+.bottompart {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background-color: red;
+  z-index: 2;
+  bottom: 0px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.letter {
+  width: 40vw;
+  height: 60vh;
+  background-color: #fff;
+  position: absolute;
+  right: 10%;
+  top: -150px;
+  padding: 20px;
+  z-index: 1;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.hidden {
+  display: none;
+}
