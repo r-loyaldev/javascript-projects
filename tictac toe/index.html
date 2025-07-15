@@ -1,0 +1,251 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #3d3d3d;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+    .conatiner {
+      width: 100%;
+      height: 50%;
+      margin: 5% auto;
+      place-items: center;
+      padding: 13px 0;
+      flex-direction: column;
+      /* background-color: red; */
+    }
+    .conatiner > h1 {
+      margin-bottom: 90px;
+      font-size: 6em;
+      color: #fff;
+      text-align: center;
+      font-family: "Courier New", Courier, monospace;
+    }
+    h1 {
+      text-align: center;
+      color: white;
+    }
+    .game-board {
+      width: 300px;
+      height: 300px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      background-color: #3d3d3d;
+    }
+    .game-board div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      color: white;
+      background-color: #3d3d3d;
+      /* border: 2px solid #ccc; */
+      cursor: pointer;
+    }
+    .cell1 {
+      border-top: none;
+      border-left: none;
+      border-right: 2px solid #ccc;
+      border-bottom: 2px solid #ccc;
+    }
+    .cell2 {
+      border-top: none;
+      border-left: 2px solid #ccc;
+      border-right: 2px solid #ccc;
+      border-bottom: 2px solid #ccc;
+    }
+    .cell3 {
+      border-top: none;
+      border-left: 2px solid #ccc;
+      border-right: none;
+      border-bottom: 2px solid #ccc;
+    }
+    .cell4 {
+      border-top: 2px solid #ccc;
+      border-left: none;
+      border-right: 2px solid #ccc;
+      border-bottom: 2px solid #ccc;
+    }
+    .cell5 {
+      border-top: 2px solid #ccc;
+      border-left: 2px solid #ccc;
+      border-right: 2px solid #ccc;
+      border-bottom: 2px solid #ccc;
+    }
+    .cell6 {
+      border-top: 2px solid #ccc;
+      border-left: 2px solid #ccc;
+      border-right: none;
+      border-bottom: 2px solid #ccc;
+    }
+    .cell7 {
+      border-top: 2px solid #ccc;
+      border-left: none;
+      border-right: 2px solid #ccc;
+      border-bottom: none;
+    }
+    .cell8 {
+      border-top: 2px solid #ccc;
+      border-left: 2px solid #ccc;
+      border-right: 2px solid #ccc;
+      border-bottom: none;
+    }
+    .cell9 {
+      border-top: 2px solid #ccc;
+      border-left: 2px solid #ccc;
+      border-right: none;
+      border-bottom: none;
+    }
+  </style>
+  <body>
+    <div class="conatiner">
+      <h1>Tic Tac Toe</h1>
+      <div class="game-board">
+        <div class="cell1"></div>
+        <div class="cell2"></div>
+        <div class="cell3"></div>
+        <div class="cell4"></div>
+        <div class="cell5"></div>
+        <div class="cell6"></div>
+        <div class="cell7"></div>
+        <div class="cell8"></div>
+        <div class="cell9"></div>
+      </div>
+    </div>
+
+    <script></script>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic Tac Toe</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    #board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 5px;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      background-color: #f2f2f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      cursor: pointer;
+      border: 2px solid #333;
+    }
+
+    #status {
+      margin-top: 20px;
+      font-size: 1.5em;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tic Tac Toe</h1>
+  <div id="board"></div>
+  <div id="status">Current Turn: X</div>
+  <button onclick="restartGame()">Restart</button>
+
+  <script>
+    const board = document.getElementById('board');
+    const status = document.getElementById('status');
+    let cells = [];
+    let currentPlayer = 'X';
+    let gameOver = false;
+
+    function createBoard() {
+      board.innerHTML = '';
+      cells = [];
+
+      for (let i = 0; i < 9; i++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.dataset.index = i;
+
+        cell.addEventListener('click', () => handleClick(i));
+
+        board.appendChild(cell);
+        cells.push(cell);
+      }
+
+      currentPlayer = 'X';
+      gameOver = false;
+      status.textContent = 'Current Turn: X';
+    }
+
+    function handleClick(index) {
+      if (cells[index].textContent || gameOver) return;
+
+      cells[index].textContent = currentPlayer;
+
+      if (checkWinner(currentPlayer)) {
+        status.textContent = `🎉 Player ${currentPlayer} Wins!`;
+        gameOver = true;
+      } else if (isDraw()) {
+        status.textContent = "It's a Draw!";
+        gameOver = true;
+      } else {
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        status.textContent = `Current Turn: ${currentPlayer}`;
+      }
+    }
+
+    function checkWinner(player) {
+      const winPatterns = [
+        [0,1,2], [3,4,5], [6,7,8], // rows
+        [0,3,6], [1,4,7], [2,5,8], // columns
+        [0,4,8], [2,4,6]           // diagonals
+      ];
+
+      return winPatterns.some(pattern =>
+        pattern.every(index => cells[index].textContent === player)
+      );
+    }
+
+    function isDraw() {
+      return cells.every(cell => cell.textContent !== '');
+    }
+
+    function restartGame() {
+      createBoard();
+    }
+
+    createBoard();
+  </script>
+</body>
+</html>
+<!-- This code creates a simple Tic Tac Toe game with a grid layout, allowing two players to take turns and play the game. The game detects wins and draws, and provides a restart button. -->
+<!-- The game board is created dynamically using JavaScript, and the game logic is handled in the
